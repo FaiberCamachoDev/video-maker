@@ -1,0 +1,87 @@
+<!doctype html>
+<!--
+  Starting point for one illustration scene (1080x940 slot, top of the reel).
+  `npm run scenes` copies it to compositions/<scene-id>.html and fills the
+  {{TOKENS}}; after that the file is yours: redesign it for what the script
+  says at this moment. Keep text inside y 270-860 and x 65-1015.
+-->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="{{SCENE_ID}}-template">
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: var(--bg);
+        }
+        #{{SCENE_ID}}-kicker {
+          position: absolute;
+          left: 65px;
+          right: 65px;
+          top: 300px;
+          font-family: {{FONT_BODY_STACK}};
+          font-weight: 700;
+          font-size: 34px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--accent);
+        }
+        #{{SCENE_ID}}-title {
+          position: absolute;
+          left: 65px;
+          right: 65px;
+          top: 360px;
+          font-family: {{FONT_DISPLAY_STACK}};
+          font-weight: 800;
+          font-size: 92px;
+          line-height: 1.05;
+          letter-spacing: -0.02em;
+          color: var(--ink);
+        }
+        #{{SCENE_ID}}-bar {
+          position: absolute;
+          left: 65px;
+          top: 780px;
+          width: 240px;
+          height: 12px;
+          border-radius: 6px;
+          background: var(--accent);
+          transform-origin: left center;
+        }
+      </style>
+      <div id="root" data-composition-id="{{SCENE_ID}}" data-width="1080" data-height="940">
+        <div id="{{SCENE_ID}}-kicker">{{KICKER}}</div>
+        <div id="{{SCENE_ID}}-title">{{TITLE}}</div>
+        <div id="{{SCENE_ID}}-bar"></div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo(
+            "#{{SCENE_ID}}-kicker",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+            0.15,
+          );
+          tl.fromTo(
+            "#{{SCENE_ID}}-title",
+            { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+            0.3,
+          );
+          tl.fromTo(
+            "#{{SCENE_ID}}-bar",
+            { scaleX: 0 },
+            { scaleX: 1, duration: 0.6, ease: "power2.inOut" },
+            0.7,
+          );
+          window.__timelines["{{SCENE_ID}}"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

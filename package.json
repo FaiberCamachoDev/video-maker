@@ -1,0 +1,25 @@
+{
+  "name": "video-maker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kit para hacer Reels 9:16 con HyperFrames: ilustración arriba, persona abajo, subtítulos en el medio.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "config": {
+    "hyperframes": "0.8.181"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "new": "node scripts/new.mjs",
+    "reframe": "node scripts/reframe.mjs",
+    "scenes": "node scripts/scenes.mjs",
+    "captions": "node scripts/captions.mjs",
+    "check": "node scripts/hf.mjs check",
+    "snapshot": "node scripts/hf.mjs snapshot",
+    "preview": "node scripts/hf.mjs preview",
+    "render": "node scripts/render.mjs"
+  }
+}

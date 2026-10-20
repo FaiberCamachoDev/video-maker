@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="scene-04-template">
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: var(--bg);
+        }
+        #scene-04-kicker {
+          position: absolute;
+          left: 65px;
+          top: 300px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 34px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--accent);
+        }
+        #scene-04-title {
+          position: absolute;
+          left: 65px;
+          right: 65px;
+          top: 360px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 800;
+          font-size: 92px;
+          line-height: 1.05;
+          letter-spacing: -0.02em;
+          color: var(--ink);
+        }
+        #scene-04-bubble {
+          position: absolute;
+          left: 65px;
+          right: 65px;
+          top: 580px;
+          padding: 30px 36px;
+          border: 4px solid var(--accent2);
+          border-radius: 28px 28px 28px 8px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 46px;
+          line-height: 1.25;
+          color: var(--ink);
+        }
+        #scene-04-bubble .char {
+          opacity: 0;
+        }
+      </style>
+      <div id="root" data-composition-id="scene-04" data-width="1080" data-height="940">
+        <div id="scene-04-kicker">Paso 3</div>
+        <div id="scene-04-title">Pídeselo a Claude</div>
+        <div id="scene-04-bubble"></div>
+      </div>
+      <script>
+        (function () {
+          // Build one span per character before the timeline exists, so the
+          // typing is a plain stagger that seeks deterministically.
+          const bubble = document.getElementById("scene-04-bubble");
+          "hazme un reel con source/mi-clip.mp4".split("").forEach(function (c) {
+            const span = document.createElement("span");
+            span.className = "char";
+            span.textContent = c;
+            bubble.appendChild(span);
+          });
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#scene-04-kicker", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.1);
+          tl.fromTo("#scene-04-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+          tl.fromTo("#scene-04-bubble", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.5);
+          tl.fromTo("#scene-04-bubble .char", { opacity: 0 }, { opacity: 1, duration: 0.01, stagger: 0.035 }, 0.8);
+          window.__timelines["scene-04"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

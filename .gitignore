@@ -1,0 +1,46 @@
+# --- Media: heavy and personal (faces, voices). Never in Git. ---
+source/*
+!source/README.md
+renders/
+
+# --- Personal content: each person's projects and brands stay local ---
+projects/*
+!projects/README.md
+brands/*
+!brands/README.md
+!brands/example.json
+!brands/fonts/
+brands/fonts/*
+!brands/fonts/inter/
+
+# --- Tool output ---
+node_modules/
+.hyperframes/
+*.log
+
+# --- Agent setup ---
+# Unlike most repos, CLAUDE.md, .claude/skills/, .claude/agents/ and
+# .claude/settings.json ARE the product here: they are what a cloned repo's
+# Claude Code loads. Only the personal layer is ignored.
+CLAUDE.local.md
+.claude/settings.local.json
+AGENTS.md
+.mcp.json
+.graphifyignore
+
+# --- Study and planning notes (personal) ---
+docsStudio/
+docStudio/
+docs/mapping.md
+docs/handoff.md
+SPEC.md
+SPEC-*.md
+strix_runs/
+docs/mapping-legacy/
+docs/worklog/
+ESTADO-SESION.md
+
+# --- Local agent tool artifacts ---
+graphify-out/
+.gitnexus/
+prototypes/

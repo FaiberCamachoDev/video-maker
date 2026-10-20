@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="scene-02-template">
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: var(--bg);
+        }
+        #scene-02-kicker {
+          position: absolute;
+          left: 65px;
+          top: 300px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 34px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--accent);
+        }
+        #scene-02-title {
+          position: absolute;
+          left: 65px;
+          top: 360px;
+          width: 560px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 800;
+          font-size: 92px;
+          line-height: 1.05;
+          letter-spacing: -0.02em;
+          color: var(--ink);
+        }
+        #scene-02-phone {
+          position: absolute;
+          left: 700px;
+          top: 300px;
+          width: 250px;
+          height: 444px;
+          border: 10px solid var(--ink);
+          border-radius: 44px;
+        }
+        #scene-02-notch {
+          position: absolute;
+          left: 80px;
+          top: 14px;
+          width: 70px;
+          height: 10px;
+          border-radius: 5px;
+          background: var(--ink);
+        }
+        #scene-02-rec {
+          position: absolute;
+          left: 26px;
+          top: 46px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 26px;
+          color: var(--ink);
+        }
+        #scene-02-dot {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: var(--accent);
+        }
+        #scene-02-ratio {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 30px;
+          text-align: center;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 800;
+          font-size: 48px;
+          color: var(--accent);
+        }
+      </style>
+      <div id="root" data-composition-id="scene-02" data-width="1080" data-height="940">
+        <div id="scene-02-kicker">Paso 1</div>
+        <div id="scene-02-title">Graba en vertical</div>
+        <div id="scene-02-phone">
+          <div id="scene-02-notch"></div>
+          <div id="scene-02-rec"><div id="scene-02-dot"></div>REC</div>
+          <div id="scene-02-ratio">9:16</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#scene-02-kicker", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.1);
+          tl.fromTo("#scene-02-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+          // The phone turns from landscape to portrait: the step, said with motion.
+          tl.fromTo(
+            "#scene-02-phone",
+            { opacity: 0, rotation: -90, scale: 0.8 },
+            { opacity: 1, rotation: 0, scale: 1, duration: 0.8, ease: "back.out(1.4)" },
+            0.35,
+          );
+          tl.fromTo("#scene-02-dot", { opacity: 1 }, { opacity: 0.2, duration: 0.45, ease: "sine.inOut", repeat: 5, yoyo: true }, 1.2);
+          window.__timelines["scene-02"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

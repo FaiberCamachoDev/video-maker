@@ -1,0 +1,23 @@
+{
+  "account": "example",
+  "handle": "@cuenta.ejemplo",
+  "palette": {
+    "bg": "#0A0C12",
+    "ink": "#F5F5F0",
+    "accent": "#FF7A45",
+    "accent2": "#3DD6D0"
+  },
+  "fonts": {
+    "display": "Inter",
+    "body": "Inter"
+  },
+  "logo": null,
+  "captions": {
+    "size": 64,
+    "weight": 800,
+    "case": "sentence",
+    "highlight": "accent",
+    "box": "bg"
+  },
+  "style": "editorial"
+}

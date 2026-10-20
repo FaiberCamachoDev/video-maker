@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template id="scene-05-template">
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: var(--bg);
+        }
+        #scene-05-kicker {
+          position: absolute;
+          left: 65px;
+          top: 300px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 34px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--accent);
+        }
+        #scene-05-title {
+          position: absolute;
+          left: 65px;
+          right: 65px;
+          top: 360px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 800;
+          font-size: 80px;
+          line-height: 1.05;
+          letter-spacing: -0.02em;
+          color: var(--ink);
+        }
+        /* A 9:16 miniature of the reel; band heights follow the real zones. */
+        #scene-05-diagram {
+          position: absolute;
+          left: 65px;
+          top: 476px;
+          width: 210px;
+          height: 373px;
+          border: 6px solid var(--ink);
+          border-radius: 30px;
+          overflow: hidden;
+        }
+        #scene-05-top,
+        #scene-05-bot,
+        #scene-05-mid {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          opacity: 0.25;
+        }
+        #scene-05-top {
+          top: 0;
+          height: 48.96%;
+          background: var(--accent);
+        }
+        #scene-05-bot {
+          top: 48.96%;
+          height: 51.04%;
+          background: var(--accent2);
+        }
+        #scene-05-mid {
+          top: 44.79%;
+          height: 7.29%;
+          background: var(--ink);
+        }
+        .scene-05-label {
+          position: absolute;
+          left: 330px;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 800;
+          font-size: 52px;
+          color: var(--ink);
+          opacity: 0.3;
+        }
+        #scene-05-l1 {
+          top: 520px;
+        }
+        #scene-05-l2 {
+          top: 630px;
+        }
+        #scene-05-l3 {
+          top: 740px;
+        }
+      </style>
+      <div id="root" data-composition-id="scene-05" data-width="1080" data-height="940">
+        <div id="scene-05-kicker">Así queda</div>
+        <div id="scene-05-title">Arriba, medio, abajo</div>
+        <div id="scene-05-diagram">
+          <div id="scene-05-top"></div>
+          <div id="scene-05-bot"></div>
+          <div id="scene-05-mid"></div>
+        </div>
+        <div id="scene-05-l1" class="scene-05-label">Ilustración</div>
+        <div id="scene-05-l2" class="scene-05-label">Subtítulos</div>
+        <div id="scene-05-l3" class="scene-05-label">Tú</div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#scene-05-kicker", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.1);
+          tl.fromTo("#scene-05-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+          tl.fromTo("#scene-05-diagram", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.4);
+          // Each band lights up when the voice names it (scene-local seconds).
+          [
+            ["#scene-05-top", "#scene-05-l1", 1.1],
+            ["#scene-05-bot", "#scene-05-l3", 2.55],
+            ["#scene-05-mid", "#scene-05-l2", 3.45],
+          ].forEach(function (b) {
+            tl.to(b[0], { opacity: 1, duration: 0.3, ease: "power2.out" }, b[2]);
+            tl.to(b[1], { opacity: 1, duration: 0.3, ease: "power2.out" }, b[2]);
+          });
+          window.__timelines["scene-05"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
