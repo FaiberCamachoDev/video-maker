@@ -13,6 +13,9 @@ brands/*
 brands/fonts/*
 !brands/fonts/inter/
 
+# --- Style references: third-party media and internal study notes stay local ---
+referencias/
+
 # --- Tool output ---
 node_modules/
 .hyperframes/
